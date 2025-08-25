@@ -1,0 +1,15 @@
+.app-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--text-color-on-primary);
+}
+
+.p-toolbar-group-left button {
+  margin-left: 0.5rem;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

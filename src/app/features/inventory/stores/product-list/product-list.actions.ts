@@ -13,4 +13,9 @@ export const fetchError = createAction(
   props<{ error: any }>()
 );
 
+export const addNewProduct = createAction(
+  '[Product List] Add New Product',
+  props<{ product: Product }>()
+);
+
 export const clearState = createAction('[Product List] Clear State');

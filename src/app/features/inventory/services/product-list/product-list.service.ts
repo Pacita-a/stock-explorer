@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ProductListState } from '../stores/product-list/product-list.reducer';
 import { Store } from '@ngrx/store';
 import { filter, Observable } from 'rxjs';
-import * as ProductListSelector from '../stores/product-list/product-list.selectors';
 import { Product } from 'src/app/core/models/product/product.model';
-import * as ProductListActions from '../stores/product-list/product-list.actions';
+import { ProductListState } from '../../stores/product-list/product-list.reducer';
+import * as ProductListSelector from '../../stores/product-list/product-list.selectors';
+import * as ProductListActions from '../../stores/product-list/product-list.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -36,5 +36,9 @@ export class ProductListService {
     return this.store
       .select(ProductListSelector.selectTotalInventoryValue)
       .pipe(filter((val) => !!val));
+  }
+
+  public addNewProduct(product: Product): void {
+    this.store.dispatch(ProductListActions.addNewProduct({ product }));
   }
 }

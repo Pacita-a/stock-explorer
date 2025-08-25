@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as ProductListActions from './product-list.actions';
-import { ProductListApiService } from '../../services/product-list-api.service';
+import { ProductListApiService } from '../../services/product-list/product-list-api.service';
 
 @Injectable()
 export class ProductListEffects {

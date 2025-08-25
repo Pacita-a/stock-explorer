@@ -1,23 +1,22 @@
 <p-table
-  *ngIf="(products$ | async)?.length"
   [value]="(products$ | async) || []"
   [paginator]="true"
   [rows]="8"
   [responsiveLayout]="'scroll'"
   [showCurrentPageReport]="true"
-  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} productos"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
   [rowsPerPageOptions]="[5, 10, 20]"
   class="shadow-lg rounded-lg"
 >
   <ng-template pTemplate="header">
     <tr>
       <th pSortableColumn="productName">
-        Producto <p-sortIcon field="productName"></p-sortIcon>
+        Product Name <p-sortIcon field="productName"></p-sortIcon>
       </th>
-      <th pSortableColumn="category">
-        Categoría <p-sortIcon field="category"></p-sortIcon>
+      <th *ngIf="!isSummaryMode" pSortableColumn="category">
+        Category <p-sortIcon field="category"></p-sortIcon>
       </th>
-      <th pSortableColumn="subcategory">
+      <th *ngIf="!isSummaryMode" pSortableColumn="subcategory">
         Subcategory <p-sortIcon field="subcategory"></p-sortIcon>
       </th>
       <th pSortableColumn="stock">
@@ -26,27 +25,46 @@
       <th pSortableColumn="price">
         Price <p-sortIcon field="price"></p-sortIcon>
       </th>
+      <th *ngIf="!isSummaryMode">Actions</th>
     </tr>
   </ng-template>
 
   <ng-template pTemplate="body" let-product>
     <tr>
       <td>{{ product.productName | titlecase }}</td>
-      <td>
+      <td *ngIf="!isSummaryMode">
         {{ product.category | replaceCharacters : "_" : " " | titlecase }}
       </td>
-      <td>
+      <td *ngIf="!isSummaryMode">
         {{ product.subcategory | replaceCharacters : "_" : " " | titlecase }}
       </td>
       <td>{{ product.stock }}</td>
       <td>{{ product.price | currency : "$" : "symbol" : "1.2-2" }}</td>
+      <td *ngIf="!isSummaryMode">
+        <button
+          pButton
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-info"
+          (click)="openEditDialog(product)"
+        ></button>
+        <button
+          pButton
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-danger"
+          (click)="deleteProduct(product)"
+        ></button>
+      </td>
     </tr>
   </ng-template>
 
   <ng-template pTemplate="emptymessage">
     <tr>
-      <td colspan="3" class="text-center text-gray-500">
-        No hay productos disponibles
+      <td colspan="6" class="text-center text-gray-500">
+        {{
+          isSummaryMode
+            ? "No products with low stock."
+            : "No products available."
+        }}
       </td>
     </tr>
   </ng-template>

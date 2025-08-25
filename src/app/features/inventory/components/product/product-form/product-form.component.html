@@ -1,0 +1,144 @@
+<form *ngIf="productForm" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="p-field">
+    <label for="productName">Name</label>
+    <input
+      id="productName"
+      type="text"
+      pInputText
+      formControlName="productName"
+    />
+    <small
+      *ngIf="
+        productForm.get('productName')?.hasError('required') &&
+        productForm.get('productName')?.touched
+      "
+      class="p-error"
+    >
+      Name is required
+    </small>
+
+    <small
+      *ngIf="productForm.get('productName')?.hasError('minlength')"
+      class="p-error"
+    >
+      Minimum 2 characters
+    </small>
+
+    <small
+      *ngIf="productForm.get('productName')?.hasError('maxlength')"
+      class="p-error"
+    >
+      Maximum 50 characters
+    </small>
+  </div>
+
+  <div class="p-field">
+    <label for="stock">Stock</label>
+    <input id="stock" type="number" pInputText formControlName="stock" />
+    <small
+      *ngIf="
+        productForm.get('stock')?.hasError('required') &&
+        (productForm.get('stock')?.dirty || productForm.get('stock')?.touched)
+      "
+      class="p-error"
+    >
+      Stock is required
+    </small>
+
+    <small
+      *ngIf="
+        productForm.get('stock')?.hasError('min') &&
+        (productForm.get('stock')?.dirty || productForm.get('stock')?.touched)
+      "
+      class="p-error"
+    >
+      Stock cannot be negative
+    </small>
+  </div>
+
+  <div class="p-field">
+    <label for="price">Price</label>
+    <input id="price" type="number" pInputText formControlName="price" />
+    <small
+      *ngIf="
+        productForm.get('price')?.hasError('required') &&
+        (productForm.get('price')?.dirty || productForm.get('price')?.touched)
+      "
+      class="p-error"
+    >
+      Price is required
+    </small>
+
+    <small
+      *ngIf="
+        productForm.get('price')?.hasError('min') &&
+        (productForm.get('price')?.dirty || productForm.get('price')?.touched)
+      "
+      class="p-error"
+    >
+      Price cannot be negative
+    </small>
+  </div>
+
+  <div class="p-field p-fluid">
+    <label for="category">Category</label>
+    <p-dropdown
+      [options]="groupedCategories"
+      [group]="true"
+      formControlName="category"
+      placeholder="Select Category"
+      scrollHeight="250px"
+      display="chip"
+    >
+      <ng-template let-group pTemplate="group">
+        <div class="flex items-center">
+          <span>{{
+            group.value | replaceCharacters : "_" : " " | titlecase
+          }}</span>
+        </div>
+      </ng-template>
+    </p-dropdown>
+    <small
+      *ngIf="
+        productForm.get('category')?.hasError('required') &&
+        (productForm.get('category')?.dirty ||
+          productForm.get('category')?.touched)
+      "
+      class="p-error"
+    >
+      Category is required
+    </small>
+  </div>
+
+  <div class="p-field">
+    <label for="description">Description</label>
+    <textarea
+      id="description"
+      pInputTextarea
+      formControlName="description"
+    ></textarea>
+    <small
+      *ngIf="productForm.get('description')?.hasError('maxlength')"
+      class="p-error"
+    >
+      Maximum 200 characters
+    </small>
+  </div>
+
+  <div class="p-dialog-footer">
+    <button
+      pButton
+      label="Cancel"
+      type="button"
+      class="p-button-secondary"
+      (click)="onCancel()"
+    ></button>
+    <button
+      pButton
+      label="Save"
+      type="submit"
+      class="p-button-success"
+      [disabled]="productForm.invalid"
+    ></button>
+  </div>
+</form>

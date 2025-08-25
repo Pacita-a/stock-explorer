@@ -1,0 +1,21 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-field label {
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.p-dialog-footer {
+  display: flex;
+  justify-content: space-around;
+}

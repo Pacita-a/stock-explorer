@@ -30,5 +30,9 @@ export const reducer = createReducer(
     ...state,
     error: payload.error,
   })),
+  on(ProductListActions.addNewProduct, (state, payload) => ({
+    ...state,
+    productList: [payload.product, ...state.productList],
+  })),
   on(ProductListActions.clearState, () => initialState)
 );

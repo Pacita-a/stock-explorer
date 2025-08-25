@@ -1,5 +1,3 @@
-// TODO: We could have an endpoint with a list of categories and subcategories;
-
 export enum ProductSubcategoryEnum {
   WRENCH = 'WRENCH',
   SCREWDRIVER = 'SCREWDRIVER',

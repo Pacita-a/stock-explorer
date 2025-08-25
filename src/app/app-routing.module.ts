@@ -4,8 +4,16 @@ import { ProductListComponent } from './features/inventory/components/product-li
 import { IndicatorsPanelComponent } from './features/inventory/components/indicators-panel/indicators-panel.component';
 
 const routes: Routes = [
-  { path: 'summary', component: IndicatorsPanelComponent },
-  { path: 'products', component: ProductListComponent },
+  {
+    path: 'summary',
+    component: IndicatorsPanelComponent,
+    data: { summary: true },
+  },
+  {
+    path: 'products',
+    component: ProductListComponent,
+    data: { summary: false },
+  },
   { path: '**', redirectTo: 'summary' },
 ];
 
