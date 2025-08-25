@@ -81,14 +81,15 @@
   </div>
 
   <div class="p-field p-fluid">
-    <label for="category">Category</label>
+    <label for="subcategory">Subcategory</label>
     <p-dropdown
       [options]="groupedCategories"
       [group]="true"
-      formControlName="category"
-      placeholder="Select Category"
+      formControlName="subcategory"
+      placeholder="Select Subcategory"
       scrollHeight="250px"
       display="chip"
+      (onChange)="onCategoryChange($event.value)"
     >
       <ng-template let-group pTemplate="group">
         <div class="flex items-center">
@@ -100,9 +101,9 @@
     </p-dropdown>
     <small
       *ngIf="
-        productForm.get('category')?.hasError('required') &&
-        (productForm.get('category')?.dirty ||
-          productForm.get('category')?.touched)
+        productForm.get('subcategory')?.hasError('required') &&
+        (productForm.get('subcategory')?.dirty ||
+          productForm.get('subcategory')?.touched)
       "
       class="p-error"
     >

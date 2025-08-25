@@ -44,6 +44,7 @@ export class ProductFormComponent implements OnInit {
       stock: [0, [Validators.required, Validators.min(0)]],
       price: [0, [Validators.required, Validators.min(0)]],
       category: ['', Validators.required],
+      subcategory: ['', Validators.required],
       description: ['', [Validators.maxLength(200)]],
     });
 
@@ -92,5 +93,17 @@ export class ProductFormComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  onCategoryChange(selected: string) {
+    const selectedCategory = this.groupedCategories.find((category: any) =>
+      category.items.some((subcategory: any) => subcategory.value === selected)
+    );
+
+    if (selected) {
+      this.productForm.patchValue({
+        category: selectedCategory.label,
+      });
+    }
   }
 }
