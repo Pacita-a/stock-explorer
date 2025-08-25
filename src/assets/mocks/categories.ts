@@ -1,28 +1,28 @@
 export const categories = [
   {
-    label: 'hand_tools',
+    label: 'Hand Tools',
     value: 'hand_tools',
     items: [
-      { label: 'wrench', value: 'wrench' },
-      { label: 'screwdriver', value: 'screwdriver' },
-      { label: 'hammer', value: 'hammer' },
+      { label: 'Hammer', value: 'hammer' },
+      { label: 'Screwdriver', value: 'screwdriver' },
+      { label: 'Wrench', value: 'wrench' },
     ],
   },
   {
-    label: 'diagnostic_tools',
+    label: 'Diagnostic & Measurement Tools',
     value: 'diagnostic_tools',
     items: [
-      { label: 'voltimeter', value: 'voltimeter' },
-      { label: 'scanner', value: 'scanner' },
-      { label: 'bottle_jack', value: 'bottle_jack' },
+      { label: 'Voltmeter', value: 'voltmeter' },
+      { label: 'Scanner', value: 'scanner' },
     ],
   },
   {
-    label: 'lifting_tools',
+    label: 'Lifting & Support Tools',
     value: 'lifting_tools',
     items: [
-      { label: 'trolley_jack', value: 'trolley_jack' },
-      { label: 'scissor_jack', value: 'scissor_jack' },
+      { label: 'Bottle Jack', value: 'bottle_jack' },
+      { label: 'Trolley Jack', value: 'trolley_jack' },
+      { label: 'Scissor Jack', value: 'scissor_jack' },
     ],
   },
 ];
