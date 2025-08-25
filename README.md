@@ -1,6 +1,21 @@
 # StockApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.3.0.
+
+
+## Requirements
+
+- [Node.js](https://nodejs.org/) = 18.20.8
+- [Angular CLI](https://angular.io/cli) >= 14.2.13  
+- npm >= 10.8.2
+
+
+## 🚀  Installation and execution
+
+Clone the repository:
+`git clone https://github.com/Pacita-a/stock-explorer.git`
+`cd stock-app`
+
 
 ## Development server
 
